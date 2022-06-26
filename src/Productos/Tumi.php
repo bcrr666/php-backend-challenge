@@ -4,7 +4,7 @@ namespace App\Productos;
 
 use App\ProductInterface;
 
-class Tumi implements ProductInterface
+class Tumi extends Product implements ProductInterface
 {
     public $quality;
     public $sellIn;

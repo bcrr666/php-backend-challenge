@@ -4,7 +4,7 @@ namespace App\Productos;
 
 use App\ProductInterface;
 
-class Ticket implements ProductInterface
+class Ticket extends Product implements ProductInterface
 {
     public $quality;
     public $sellIn;
@@ -22,20 +22,20 @@ class Ticket implements ProductInterface
     public function tick()
     {
         if ($this->quality < 50) {
-            $this->quality += 1;
+            $this->addQuality(1);
         }
 
         if ($this->sellIn < 11 && $this->quality < 50) {
-            $this->quality += 1;
+            $this->addQuality(1);
         }
         if ($this->sellIn < 6 && $this->quality < 50) {
-            $this->quality += 1;
+            $this->addQuality(1);
         }
 
-        $this->sellIn -= 1;
+        $this->subSellIn();
 
         if ($this->sellIn < 0) {
-            $this->quality = 0;
+            $this->removeQuality();
         }
     }
 }

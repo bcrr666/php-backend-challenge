@@ -4,7 +4,7 @@ namespace App\Productos;
 
 use App\ProductInterface;
 
-class Cafe implements ProductInterface
+class Cafe extends Product implements ProductInterface
 {
     public $quality;
     public $sellIn;
@@ -22,13 +22,13 @@ class Cafe implements ProductInterface
     public function tick()
     {
         if ($this->quality > 0) {
-            $this->quality -= 2;
+            $this->subQuality(2);
         }
 
-        $this->sellIn -= 1;
+        $this->subSellIn();
 
         if ($this->sellIn < 0 && $this->quality > 0) {
-            $this->quality -= 2;
+            $this->subQuality(2);
         }
     }
 }

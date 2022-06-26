@@ -4,7 +4,7 @@ namespace App\Productos;
 
 use App\ProductInterface;
 
-class Pisco implements ProductInterface
+class Pisco extends Product implements ProductInterface
 {
     public $quality;
     public $sellIn;
@@ -22,13 +22,13 @@ class Pisco implements ProductInterface
     public function tick()
     {
         if ($this->quality < 50) {
-            $this->quality += 1;
+            $this->addQuality(1);
         }
 
-        $this->sellIn -= 1;
+        $this->subSellIn();
 
         if ($this->sellIn < 0 && $this->quality < 50) {
-            $this->quality += 1;
+            $this->addQuality(1);
         }
     }
 }
